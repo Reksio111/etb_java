@@ -9,8 +9,8 @@ import java.util.Scanner;
  *         join a cause, voice opinions, and so on. Recent presidential
  *         candidates have used the Internet intensively to get out their
  *         messages and raise money for their campaigns. In this exercise,
- *         youâ€™ll write a simple polling program that allows users to rate
- *         five social-consciousness issues from 1 (least important) to 10 (most
+ *         you’ll write a simple polling program that allows users to rate five
+ *         social-consciousness issues from 1 (least important) to 10 (most
  *         important). Pick five causes that are important to you (e.g.,
  *         political issues, global environmental issues). Use a one-dimensional
  *         array topics (of type String) to store the five causes. To summarize
@@ -38,39 +38,75 @@ import java.util.Scanner;
 public class Survey {
 
 	public static void main(String args[]) {
+		String[] topics = { "Political Corruption  ", "Global envirovment    ", "Unemployment          ",
+				"Poverty               ", "Lack of infrastructure" };
+		int[][] responses = new int[5][10];
 		Scanner keyIn = new Scanner(System.in);
-		String issueLow, issueHig;
-		String[] surveyTopics = { "Health", "Education", "Law", "Taxes", "Ecology" };
-		int[][] results = new int[10][5];
-		int count = 0;
-		int issuePointL=0, issuePiontH=0;
-		double issueAvg=0;
-		
-		
-		
-		
-		
+		int[] sumResponses = new int[5];
+		double avg, total;
 
-		String surveyRules = "**************************************************************" + "\nThe survey rules:"
-				+ "\n1. Chose five most important issues tha you would ask president candidates for."
-				+ "\n2. Rate tehm in range 1-10, where 1 is the least and 10 the most important for you."
-				+ "\n3. Be honest in your answer. " + "\nThank you. \n" + "The survey topics are following:\n";
-		try {
-			for (int i = 0; i < results[i].length; i++) {
-				System.out.print(surveyRules);
-				for (String name : surveyTopics)
-					System.out.print(name + "\n");
-				for (int j = 0; j < results[i].length; j++) {
-					System.out.print("\nRate " + surveyTopics[j] + " importance:");
-					results[i][j] = keyIn.nextInt();
-				} // internal
-				System.out.print("\nThank you for your time\n\n\n");
-			} // external
-			System.out.print("Finish");
-		} catch (InputMismatchException ex) {
-			System.out.println("Wrong input format");
+		System.out.println("The five major issues are:");
+		for (String name : topics)
+			System.out.println(name);
+
+		System.out.println("Please rate them from 1 (least important) to 10 (most important):");
+
+		for (int i = 0; i < 10; i++) {
+			total = 0;
+			System.out.println("Welcome user " + (i + 1));
+			for (int j = 0; j < 5; j++) {
+				System.out.print("Enter your raiting for " + topics[j] + " :");
+				responses[j][i] = keyIn.nextInt();
+
+			} //
+		} // external loop
+
+		System.out.print(
+				"\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n ");
+		System.out.print("\t\t\t\t*********** STATISTICS ***********\n");
+		System.out.print(
+				"- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
+		System.out.println(
+				"\n______________________________________________________________________________________________________________");
+		for (int i = 0; i < responses.length; i++) {
+			total = 0;
+			int high = responses[0][0];
+			int low = responses[0][0];
+			System.out.print(topics[i] + "\t");
+			for (int j = 0; j < responses[i].length; j++) {
+				System.out.print(responses[i][j] + "\t");
+				total += responses[i][j];
+				sumResponses[i] = (int) total;
+			} // internal
+			avg = total / (double) responses[i].length;
+			System.out.print(avg);
+			System.out.print("\n");
+
+		} // external
+		System.out.println(
+				"______________________________________________________________________________________________________________");
+
+		int maxValue = sumResponses[0];
+		int minValue = sumResponses[0];
+		for (int i = 1; i < sumResponses.length; i++) {
+			if (sumResponses[i] > maxValue)
+				maxValue = sumResponses[i];
+			if (sumResponses[i] < minValue)
+				minValue = sumResponses[i];
 		}
-		
+		for (int i = 0; i < sumResponses.length; i++) {
+			if (maxValue == sumResponses[i]) {
+				System.out.println("The topic that received the highest values is " + topics[i] + " and scored "
+						+ maxValue + " points");
+
+			}
+			if (minValue == sumResponses[i]) {
+				System.out.println("The topic thac received the least values is " + topics[i] + " and scored "
+						+ minValue + " points");
+
+			}
+		}
+
 	}// main
 
 }// class
