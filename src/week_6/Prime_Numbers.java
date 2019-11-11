@@ -21,12 +21,13 @@ public class Prime_Numbers {
 	}
 	
 	boolean isPrime(int n) {
-	    //check if n is a multiple of 2
-	    if (n%2==0) 
+
+	    //check if n is a multiple of 2 and is not equals to 1
+	    if ( n % 2 == 0 || n == 1 ) 
 	    	return false;
 	    //if not, then just check the odds
-	    for(int i=3;i*i<=n;i+=2) {
-	        if(n%i==0)
+	    for( int i=3; i*i<=n; i+=2 ) {
+	        if( n % i == 0 )
 	            return false;
 	    }
 	    return true;
@@ -35,7 +36,7 @@ public class Prime_Numbers {
 	
 		for (int i = 0 ; i < arr.length; i++) {
 			if(isPrime(arr[i]))
-		System.out.print(arr[i] + ",");	
+		System.out.println(arr[i]);	
 		}
 		
 	}
