@@ -62,22 +62,18 @@ public class Metric_convrsion {
 					System.out.print(number + " inch equals " + df.format(toInch(number)) + " centimeters\n\n");
 				else
 					System.out.print(number + " inches equals " + df.format(toInch(number)) + " centimeters\n\n");
-
 				break;
 			case 2:
 				if (number == 1)
 					System.out.print(number + " feed equals " + toFoot(number) + " centimeters\n\n");
 				else
 					System.out.print(number + " feeds equals " + toFoot(number) + " centimeters\n\n");
-
 				break;
 			case 3:
 				if (number == 1)
 					System.out.print(number + " yard equals " + toYard(number) + " meters\n\n");
 				else
 					System.out.print(number + " yards equals " + toYard(number) + " meters\n\n");
-
-				System.out.print(number + " yards equals " + toYard(number) + " meters\n\n");
 				break;
 			case 4:
 				if (number == 1)
@@ -87,12 +83,10 @@ public class Metric_convrsion {
 
 				break;
 			case 5:
-
 				System.out.print("Quit");
 				break;
 
 			default:
-
 				System.out.print("That choice ia not available\n");
 				break;
 			}
