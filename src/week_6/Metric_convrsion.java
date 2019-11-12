@@ -58,19 +58,33 @@ public class Metric_convrsion {
 
 			switch (choice) {
 			case 1:
+				if (number == 1)
+					System.out.print(number + " inch equals " + df.format(toInch(number)) + " centimeters\n\n");
+				else
+					System.out.print(number + " inches equals " + df.format(toInch(number)) + " centimeters\n\n");
 
-				System.out.print(number + " inches equals " + df.format(toInch(number)) + " centimeters\n");
 				break;
 			case 2:
-				System.out.print(number + " feeds equals " + toFoot(number) + " centimeters\n");
+				if (number == 1)
+					System.out.print(number + " feed equals " + toFoot(number) + " centimeters\n\n");
+				else
+					System.out.print(number + " feeds equals " + toFoot(number) + " centimeters\n\n");
+
 				break;
 			case 3:
+				if (number == 1)
+					System.out.print(number + " yard equals " + toYard(number) + " meters\n\n");
+				else
+					System.out.print(number + " yards equals " + toYard(number) + " meters\n\n");
 
-				System.out.print(number + " yards equals " + toYard(number) + " meters\n");
+				System.out.print(number + " yards equals " + toYard(number) + " meters\n\n");
 				break;
 			case 4:
+				if (number == 1)
+					System.out.print(number + " mile equals " + toMile(number) + " kilometers\n\n");
+				else
+					System.out.print(number + " miles equals " + toYard(number) + " meters\n\n");
 
-				System.out.print(number + " miles equals " + toMile(number) + " kilometers\n");
 				break;
 			case 5:
 
@@ -83,9 +97,7 @@ public class Metric_convrsion {
 				break;
 			}
 		}
-		}
-	
-	
+	}
 
 	public static double toInch(int num) {
 
@@ -93,15 +105,15 @@ public class Metric_convrsion {
 	}
 
 	public static double toFoot(int num) {
-		return (double)num * 30.48;
+		return (double) num * 30.48;
 	}
 
 	public static double toYard(int num) {
-		return (double)(num * .9144);
+		return (double) (num * .9144);
 	}
 
 	public static double toMile(int num) {
-		return (double)num * 1.60934;
+		return (double) num * 1.60934;
 	}
 
 }
