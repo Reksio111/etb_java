@@ -11,6 +11,8 @@
  *  begining and and of the string
  *  code: String noSpaces=word.trim().replaceAll("[ ]{2,}", " ");
  * 
+ * REMOVE ALL whitespaces and special characters from string code:
+ * 	String str = strIn.replaceAll("([^a-zA-Z]|\\s)+", "").trim();
  *
  */
 package week_3;

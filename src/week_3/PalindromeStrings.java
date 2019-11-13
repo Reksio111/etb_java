@@ -1,4 +1,6 @@
 package week_3;
+
+import java.util.Arrays;
 /*
  * Palindrome
 A palindrome is a word, phrase or sequence that reads the same backwards as forwards.
@@ -27,8 +29,32 @@ Hint 2: Try coding the solution both with and without the use of regular express
 public class PalindromeStrings {
 
 	public static void main(String[] args) {
-		
+		// System.out.print(isPalindrome("Never odd or even"));
 
+		String str = "  A man, a plan, a canal – Panama   ";
+		String str2="Madam, I'm Adam";
+		String str3="Mr. Owl ate my metal worm";
+		String str4="Never odd or even";
+		
+		
+		System.out.println(isPalindrome(str));
+		System.out.println(isPalindrome(str4));
+		System.out.println(isPalindrome(str2));
+		System.out.println(isPalindrome(str3));
+
+	}
+
+	static boolean isPalindrome(String strIn) {
+		String str = strIn.replaceAll("([^a-zA-Z]|\\s)+", "").trim();
+		String temp = "";
+		for (int i = str.length() - 1; i >= 0; i--) {
+			temp = temp + str.charAt(i);
+		}
+
+		if (temp.equalsIgnoreCase(str))
+			return true;
+		else
+			return false;
 	}
 
 }
