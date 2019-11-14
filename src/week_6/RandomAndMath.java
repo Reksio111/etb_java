@@ -1,5 +1,6 @@
 package week_6;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 /*
@@ -21,13 +22,14 @@ public class RandomAndMath {
 
 	public static void main(String[] args) {
 		RandomAndMath tester=new RandomAndMath();
-		//tester.task1();
+		tester.task1();
 		System.out.print(tester.pickACard());
 	}
 
 	public void task1() {
 		Random generator = new Random();
 		int userNumber, secretNumber;
+		try {
 		secretNumber = generator.nextInt(100) + 1;
 		System.out.println("Secret number is: " + secretNumber);
 		Scanner scr = new Scanner(System.in);
@@ -44,6 +46,9 @@ public class RandomAndMath {
 				System.out.print("Bingo !!!!");
 
 		} while (secretNumber != userNumber);
+		}catch(InputMismatchException ex) {
+		System.out.print("Wrong input format\n");
+		}
 	}
 	public String pickACard() {
 		
