@@ -54,10 +54,11 @@ public class PalindromeStrings {
 			reverseStr = reverseStr + clearString.charAt(i);
 		}
 
-		if (reverseStr.equalsIgnoreCase(clearString))
+		if (reverseStr.equalsIgnoreCase(clearString)) {
 			return true;
-		else
+		}else {
 			return false;
+		}
 	}
 
 }
