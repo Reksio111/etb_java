@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author tst03
+ * @author jacek
  *
  */
 package software_testing;

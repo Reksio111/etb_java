@@ -1,26 +1,44 @@
 package software_testing;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+
 import java.util.Scanner;
+import java.util.Calendar;
+
 
 public class DateCheck {
 	static Scanner keyIn = new Scanner(System.in);
 	static int dayIn, monthIn, yearIn;
-	
+	static Calendar yourDOB = Calendar.getInstance();
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 
 		try {
-			 String date = "10/12/2010";
-			if (formatValidator(date))
-				System.out.println("Correct date format");
-			else
-				System.out.print("Incorrect date format");
+
+			String date = "";
+			do {
+				System.out.print("Enter yout DOB in format dd/mm/yyyy: ");
+				date = keyIn.nextLine();
+			} while (!formatValidator(date));
+
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Calendar yourDOB = Calendar.getInstance();
+			yourDOB.setTime(sdf.parse(date));
+			System.out.print(" your age " + calculateAge(yourDOB));
+			System.out.print(" your discount " + calculateDiscount(yourDOB));
+			
+			
+
 		} catch (StringIndexOutOfBoundsException ex) {
 			System.out.print("Input/Output exception. Invalid date format");
-		}
-		catch (IOException error) {
+			keyIn.next();
+		} catch (IOException error) {
 			System.out.print("Input/Output exception. Invalid date format");
+			keyIn.next();
+		} catch (NumberFormatException error) {
+			System.out.print("Input/Output exception. Invalid date format");
+			keyIn.next();
 		}
 	}
 
@@ -49,8 +67,38 @@ public class DateCheck {
 			validator = true;
 
 		return validator;
-
 	}
 
+	public static int calculateAge(Calendar dob) {
+		Calendar today = Calendar.getInstance();
 
+		int curYear = today.get(Calendar.YEAR);
+		int dobYear = dob.get(Calendar.YEAR);
+
+		int age = curYear - dobYear;
+
+		// if dob is month or day is behind today's month or day
+		// reduce age by 1
+		int curMonth = today.get(Calendar.MONTH);
+		int dobMonth = dob.get(Calendar.MONTH);
+		if (dobMonth > curMonth) { // this year can't be counted!
+			age--;
+		} else if (dobMonth == curMonth) { // same month? check for day
+			int curDay = today.get(Calendar.DAY_OF_MONTH);
+			int dobDay = dob.get(Calendar.DAY_OF_MONTH);
+			if (dobDay > curDay) { // this year can't be counted!
+				age--;
+			}
+		}
+
+		return age;
+	}
+	public static int calculateDiscount(Calendar dob) {
+		int discount=0;
+		int age=calculateAge(dob);
+		if(age >=25 && age <= 80)
+			discount=20;
+		return discount;
+			
+	}
 }
