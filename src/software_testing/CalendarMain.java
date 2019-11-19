@@ -74,7 +74,7 @@ public class CalendarMain {
 	 * Calculates the number of days for a month
 	 * @return number of days
 	 */
-	private static int getMaxMonthDays(int myMonth) {
+	protected static int getMaxMonthDays(int myMonth) {
 		int monthLength = 31;
 		if(myMonth == 9 
 				|| myMonth == 4 

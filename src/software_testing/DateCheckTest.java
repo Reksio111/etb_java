@@ -9,30 +9,30 @@ import org.junit.jupiter.api.Test;
 
 class DateCheckTest {
 
-	static 	DateCheck tester= new DateCheck();
-	static String date ="11/12/1977";
+	static DateCheck tester = new DateCheck();
+	static String date = "10/12/1977";
 	static Calendar yourDOB = Calendar.getInstance();
+
 	@Test
-	void testFormatValidator() throws IOException{
-	
-		boolean expected=true;
-		boolean actual=tester.formatValidator(date);
-		assertEquals(expected, actual, "Correct date format is dd/MM/yyyy");
+	void testFormatValidator() throws IOException {
+
+		boolean actual = tester.formatValidator(date);
+		assertTrue(actual, "Correct date format is dd/MM/yyyy. Day: 1-31, Month 1-12, Year: 1900- current");
 	}
 
 	@Test
 	void testCalculateAge() {
-		int expected=0;
-		int actual=tester.calculateAge(yourDOB);
+		int expected = 0;
+		int actual = tester.calculateAge(yourDOB);
 		assertEquals(expected, actual, "The method dispalys user age");
 	}
 
 	@Test
 	void testCalculateDiscount() {
-		int expected =0;
-		int actual=tester.calculateDiscount(yourDOB);
+		int expected = 0;
+		int actual = tester.calculateDiscount(yourDOB);
 		assertEquals(expected, actual, "The method dispalys discount based on DOB");
-		
+
 	}
 
 }
