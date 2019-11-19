@@ -6,29 +6,26 @@ import java.text.SimpleDateFormat;
 import java.util.Scanner;
 import java.util.Calendar;
 
-
 public class DateCheck {
 	static Scanner keyIn = new Scanner(System.in);
 	static int dayIn, monthIn, yearIn;
 	static Calendar yourDOB = Calendar.getInstance();
 
 	public static void main(String[] args) throws Exception {
-
+		DateCheck tester = new DateCheck();
 		try {
 
 			String date = "";
 			do {
-				System.out.print("Enter yout DOB in format dd/mm/yyyy: ");
+				System.out.print("Enter yout DOB (dd/mm/yyyy): ");
 				date = keyIn.nextLine();
-			} while (!formatValidator(date));
+			} while (!tester.formatValidator(date));
 
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Calendar yourDOB = Calendar.getInstance();
 			yourDOB.setTime(sdf.parse(date));
-			System.out.print(" your age " + calculateAge(yourDOB));
-			System.out.print(" your discount " + calculateDiscount(yourDOB));
-			
-			
+			System.out.print(" Your age is " + tester.calculateAge(yourDOB));
+			System.out.print(" Your available discount " + tester.calculateDiscount(yourDOB));
 
 		} catch (StringIndexOutOfBoundsException ex) {
 			System.out.print("Input/Output exception. Invalid date format");
@@ -42,7 +39,7 @@ public class DateCheck {
 		}
 	}
 
-	public static boolean formatValidator(String str) throws IOException {
+	public boolean formatValidator(String str) throws IOException {
 		boolean validator = false;
 		boolean length = false;
 		boolean day = false;
@@ -69,7 +66,7 @@ public class DateCheck {
 		return validator;
 	}
 
-	public static int calculateAge(Calendar dob) {
+	public int calculateAge(Calendar dob) {
 		Calendar today = Calendar.getInstance();
 
 		int curYear = today.get(Calendar.YEAR);
@@ -93,12 +90,13 @@ public class DateCheck {
 
 		return age;
 	}
-	public static int calculateDiscount(Calendar dob) {
-		int discount=0;
-		int age=calculateAge(dob);
-		if(age >=25 && age <= 80)
-			discount=20;
+
+	public int calculateDiscount(Calendar dob) {
+		int discount = 0;
+		int age = calculateAge(dob);
+		if (age >= 25 && age <= 80)
+			discount = 20;
 		return discount;
-			
+
 	}
 }
