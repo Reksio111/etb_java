@@ -17,7 +17,7 @@ public class DateCheck {
 
 			String date = "";
 			do {
-				System.out.print("Enter yout DOB (dd/mm/yyyy): ");
+				System.out.print("Enter D.O.B (dd/mm/yyyy): ");
 				date = keyIn.nextLine();
 			} while (!tester.formatValidator(date));
 
@@ -28,14 +28,14 @@ public class DateCheck {
 			System.out.print(" Your available discount " + tester.calculateDiscount(yourDOB));
 
 		} catch (StringIndexOutOfBoundsException ex) {
-			System.out.print("Input/Output exception. Invalid date format");
-			keyIn.next();
+			System.out.print("Invalid date format. StingIndexOutOfBoundsException");
+			
 		} catch (IOException error) {
 			System.out.print("Input/Output exception. Invalid date format");
-			keyIn.next();
+			
 		} catch (NumberFormatException error) {
-			System.out.print("Input/Output exception. Invalid date format");
-			keyIn.next();
+			System.out.print("Invalid date format. NumberFormatException");
+		
 		}
 	}
 
