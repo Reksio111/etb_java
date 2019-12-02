@@ -20,15 +20,33 @@ Use the Random method to pick a card for you.
 
 public class RandomExercise {
 
-	Scanner scr = new Scanner(System.in);
+	static Scanner scr = new Scanner(System.in);
 
 	public static void main(String[] args) {
 
 		RandomExercise tester = new RandomExercise();
-		tester.randomNumber();
-		System.out.print(tester.pickACard());
-		System.out.print("Compound interest:" + tester.calculateInterest());
-		System.out.print("Discrimated value is:" + tester.discriminantValue());
+		/*
+		 * tester.randomNumber(); System.out.print(tester.pickACard());
+		 * System.out.print("Compound interest:" + tester.calculateInterest());
+		 * System.out.print("Discrimated value is:" + tester.discriminantValue());
+		 */
+		System.out.print("\nEnter first number: ");
+		int digitA = scr.nextInt();
+		System.out.print("Enter second number: ");
+		int digitB = scr.nextInt();
+		System.out.print("Enter third number: ");
+		int digitC = scr.nextInt();
+		System.out.print("Discrimated value is:" + tester.discriminantValue(digitA, digitB, digitC));
+
+		System.out.print("\nEnter invested amount: ");
+		int invest = scr.nextInt();
+		System.out.print("Period:");
+		int time = scr.nextInt();
+		System.out.print("Rate:");
+		double rate = scr.nextDouble();
+		
+		System.out.print("Compound interest:" + tester.calculateInterest(invest, time, rate));
+
 	}
 
 	public void randomNumber() {
@@ -66,23 +84,12 @@ public class RandomExercise {
 		return "\nYour card is:" + suits[yourSuit] + " " + values[yourValue];
 	}
 
-	public double calculateInterest() {
-		double rate = 5.4;
-		System.out.print("\nEnter invested amound: ");
-		int investmentAmount = scr.nextInt();
-		System.out.print("Period: ");
-		int time = scr.nextInt();
-		return (double) investmentAmount + ((1 + rate / 100) * time);
+	public double calculateInterest(int invest, int period, double rate) {
+		return invest * (Math.pow((1 + rate / 100), period));
 	}
 
-	public int discriminantValue() {
-		System.out.print("\nEnter first number: ");
-		int digitA = scr.nextInt();
-		System.out.print("\nEnter second number: ");
-		int digitB = scr.nextInt();
-		System.out.print("\nEnter third number: ");
-		int digitC = scr.nextInt();
-		int dis = (int)Math.pow(digitB,2) - (4*digitA*digitC); 
+	public int discriminantValue(int a, int b, int c) {
+	int dis = (int) Math.pow(b, 2) - (4 * a * c);
 		return dis;
 	}
 }
