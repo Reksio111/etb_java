@@ -73,7 +73,7 @@ public class RandomExercise {
 		System.out.print("Period: ");
 		int time = scr.nextInt();
 		return (double) investmentAmount + ((1 + rate / 100) * time);
-	}
+	}//
 
 	public int discriminantValue() {
 		System.out.print("\nEnter first number: ");
