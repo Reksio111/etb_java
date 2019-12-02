@@ -24,18 +24,18 @@ public class DateCheck {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Calendar yourDOB = Calendar.getInstance();
 			yourDOB.setTime(sdf.parse(date));
-			System.out.print(" Your age is " + tester.calculateAge(yourDOB));
-			System.out.print(" Your available discount " + tester.calculateDiscount(yourDOB));
+			System.out.print("Your age is " + tester.calculateAge(date) + ".");
+			System.out.print(" Your discount is " + tester.calculateDiscount(date) + " %");
 
 		} catch (StringIndexOutOfBoundsException ex) {
 			System.out.print("Invalid date format. StingIndexOutOfBoundsException");
-			
+
 		} catch (IOException error) {
 			System.out.print("Input/Output exception. Invalid date format");
-			
+
 		} catch (NumberFormatException error) {
 			System.out.print("Invalid date format. NumberFormatException");
-		
+
 		}
 	}
 
@@ -66,9 +66,14 @@ public class DateCheck {
 		return validator;
 	}
 
-	public int calculateAge(Calendar dob) {
+	public int calculateAge(String str) {
 		Calendar today = Calendar.getInstance();
+		Calendar dob = Calendar.getInstance();
+		int dayIn = Integer.parseInt(str.substring(0, 2));
+		int monthIn = Integer.parseInt(str.substring(3, 5));
+		int yearIn = Integer.parseInt(str.substring(6, 10));
 
+		dob.set(yearIn, monthIn, dayIn);
 		int curYear = today.get(Calendar.YEAR);
 		int dobYear = dob.get(Calendar.YEAR);
 
@@ -91,9 +96,9 @@ public class DateCheck {
 		return age;
 	}
 
-	public int calculateDiscount(Calendar dob) {
+	public int calculateDiscount(String str) {
 		int discount = 0;
-		int age = calculateAge(dob);
+		int age = calculateAge(str);
 		if (age >= 25 && age <= 80)
 			discount = 20;
 		return discount;

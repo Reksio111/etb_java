@@ -23,14 +23,14 @@ class DateCheckTest {
 	@Test
 	void testCalculateAge() {
 		int expected = 0;
-		int actual = tester.calculateAge(yourDOB);
+		int actual = tester.calculateAge("12/12/2000");
 		assertEquals(expected, actual, "The method dispalys user age");
 	}
 
 	@Test
 	void testCalculateDiscount() {
 		int expected = 0;
-		int actual = tester.calculateDiscount(yourDOB);
+		int actual = tester.calculateDiscount("12/12/200");
 		assertEquals(expected, actual, "The method dispalys discount based on DOB");
 
 	}

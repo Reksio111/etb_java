@@ -18,10 +18,10 @@ Use the Random method to pick a card for you.
  * 
  * */
 
-public class RandomAndMath {
+public class Rando0mExercise {
 
 	public static void main(String[] args) {
-		RandomAndMath tester=new RandomAndMath();
+		Rando0mExercise tester=new Rando0mExercise();
 		tester.task1();
 		System.out.print(tester.pickACard());
 	}
@@ -58,6 +58,6 @@ public class RandomAndMath {
 		int yourSuit= generator.nextInt(suits.length);
 		int yourValue=generator.nextInt(values.length);
 		
-		return "Your card is: " + suits[yourSuit] + " " + values[yourValue];
+		return "\nYour card is: " + suits[yourSuit] + " " + values[yourValue];
 	}
 }
