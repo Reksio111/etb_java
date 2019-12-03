@@ -25,11 +25,7 @@ public class RandomExercise {
 	public static void main(String[] args) {
 
 		RandomExercise tester = new RandomExercise();
-		/*
-		 * tester.randomNumber(); System.out.print(tester.pickACard());
-		 * System.out.print("Compound interest:" + tester.calculateInterest());
-		 * System.out.print("Discrimated value is:" + tester.discriminantValue());
-		 */
+		
 		System.out.print("\nEnter first number: ");
 		int digitA = scr.nextInt();
 		System.out.print("Enter second number: ");
