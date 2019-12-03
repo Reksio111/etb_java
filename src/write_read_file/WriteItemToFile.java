@@ -12,9 +12,8 @@ public class WriteItemToFile {
 	static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) throws Exception {
-		
+
 		createItemList();
-		displayList(list);
 		writeToFile();
 		addPrices();
 		writeItemPriceFile();
@@ -68,13 +67,23 @@ public class WriteItemToFile {
 		}
 	}
 
-	public static void addPrices() {
-		for (int i = 0; i < list.length; i++) {
-			System.out.print("Price for " + list[i] + ": ");
-			String price = scanner.nextLine();
-			prices[i] = price;
+	public static void addPrices() throws Exception {
 
+		String fileLocation = "X:\\ItemsFile.txt";
+		String fileLocation1 = "X:\\ItemPriceFile.txt";
+		BufferedReader reader = new BufferedReader(new FileReader(fileLocation));
+		BufferedWriter writer = new BufferedWriter(new FileWriter(fileLocation1));
+		String line = reader.readLine();
+		for (int i = 0; i < prices.length; i++) {
+			System.out.print("Price for " + line + ": ");
+			String price = scanner.nextLine();
+			prices[i]=price;
+			writer.write(line + "\t" + prices[i] );
+			writer.newLine();
+			line = reader.readLine();
 		}
+		
+
 	}
 
 	public static void readItemsAndPricesFile() {
@@ -86,6 +95,7 @@ public class WriteItemToFile {
 				System.out.println(line);
 				line = reader.readLine();
 			}
+
 			reader.close();
 		} catch (Exception ex) {
 			System.out.print("Output Exception");
