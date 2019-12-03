@@ -89,7 +89,7 @@ public class RandomExercise {
 	}
 
 	public int discriminantValue(int a, int b, int c) {
-	int dis = (int) Math.pow(b, 2) - (4 * a * c);
+	int dis = (int)( Math.pow(b, 2) - (4 * a * c));
 		return dis;
 	}
 }
