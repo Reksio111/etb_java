@@ -83,7 +83,6 @@ public class WriteItemToFile {
 			line = reader.readLine();
 		}
 		
-
 	}
 
 	public static void readItemsAndPricesFile() {
